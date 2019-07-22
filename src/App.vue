@@ -3,47 +3,40 @@
 <template>
   <div id="app">    
 
-        <input v-model.number="count" placeholder="2" > <br> <br>
+      <input v-model.number="count"> <br> <br>
 
-<!--        
+      <div v-for="item in count"  v-bind:key="item"> 
         <button @click="increment">+</button>         
-        <span >{{count}}</span> 
+        <span >{{count}}</span>  
         <button @click="decrement">-</button>
-       
-  <ul id="example-1">
-    <li v-for="item in count "  v-bind:key="item">
-        {{ item }}  
-    </li>
-  </ul> -->
-
-      <div v-for="item in count "  v-bind:key="item"> 
-              <button @click="increment">+</button>         
-              <span >{{count}}</span>  
-              <button @click="decrement">-</button>
       </div>
+      <br><br> 
+      
+
+
   </div>
 </template>
 
 
 
+
 <script>
-    export default {
-        name:'app',
-
-        data(){
-            return {
-                count: 0
-            }
+  export default {
+    name:'app',   
+      data(){  
+        return {
+          count: 0
+          }
         },
-        methods: {  
-            increment(){
-                this.count++;
-            },
-            decrement(){
-                this.count--;  
-            }
-        }
-    }
-
+      computed: {
+        increment(){
+          return this.$store.state.count
+        },
+        decrement(){
+          return this.$store.state.count
+        } 
+      }
+  }
+    
 
 </script>
